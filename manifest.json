@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-plant-journal",
+  "name": "Obsidian Plant Journal",
+  "version": "1.0.4",
+  "minAppVersion": "0.15.0",
+  "description": "Quickly insert or manipulate dates from selected text",
+  "author": "Conor Hinchee",
+  "authorUrl": "https://conorhinchee.com",
+  "isDesktopOnly": false
+}
