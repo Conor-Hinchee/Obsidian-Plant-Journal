@@ -10,6 +10,13 @@ export default class ObsidianPlantJournal extends Plugin {
             editorCallback: (editor: Editor, view: MarkdownView) => {
                 const originalContent = editor.getValue();
                 
+                // Check for "Harvested:" entries - if found, skip refresh
+                const harvestedRegex = /^.*Harvested:\s*(\d{1,2}\/\d{1,2}\/\d{2}).*$/gm;
+                if (harvestedRegex.test(originalContent)) {
+                    new Notice('Plant has been harvested. Stats refresh skipped.');
+                    return;
+                }
+                
                 const currentDate = new Date(); // Use the actual current date
 
                 const plantStatsEntries = [];
@@ -84,7 +91,7 @@ export default class ObsidianPlantJournal extends Plugin {
                     return `${date.getMonth() + 1}/${date.getDate()}/${String(date.getFullYear()).slice(-2)}`;
                 };
 
-                const dayAndWeekInfoString = `Day ${maxSproutedDays} Week: #${plantAgeInWeeks} (${formatDate(firstDayOfCurrentWeek)} - ${formatDate(lastDayOfCurrentWeek)})`;
+                const dayAndWeekInfoString = `Week: #${plantAgeInWeeks} (${formatDate(firstDayOfCurrentWeek)} - ${formatDate(lastDayOfCurrentWeek)})`;
 
                 // Construct the new stats block content
                 const statsHeader = "## Plant Stats";
