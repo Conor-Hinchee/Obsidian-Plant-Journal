@@ -67,10 +67,9 @@ git push
 echo "Pushing tag $new_version to origin..."
 git push origin "$new_version"
 
-# 7. Print out how awesome I am
 echo ""
 echo "--------------------------------------------------"
-echo "All done! You are absolutely awesome!"
+echo "All done! You are absolutely fucking awesome!"
 echo "Version $new_version has been released."
 echo "--------------------------------------------------"
 
